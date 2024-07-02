@@ -19,11 +19,11 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
     # Add here your new settings
     "defaults": {
         "VERSION": __version__,
-        "WELCOME_MESSAGE": "The place for all your online learning",
-        "PRIMARY_COLOR": "#15376D",  # Indigo
+        "WELCOME_MESSAGE": "Площадка для твоего развития!",
+        "PRIMARY_COLOR": "#225522",
         # Footer links are dictionaries with a "title" and "url"
         # To remove all links, run:
-        # tutor config save --set INDIGO_FOOTER_NAV_LINKS=[]
+
         "FOOTER_NAV_LINKS": [
             {"title": "About Us", "url": "/about"},
             {"title": "Blog", "url": "/blog"},
@@ -40,20 +40,20 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
 
 # Theme templates
 hooks.Filters.ENV_TEMPLATE_ROOTS.add_item(
-    str(importlib_resources.files("tutorindigo") / "templates")
+    str(importlib_resources.files("pt-tutor-theme") / "templates")
 )
 # This is where the theme is rendered in the openedx build directory
 hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     [
-        ("indigo", "build/openedx/themes"),
+        ("pt-tutor-theme", "build/openedx/themes"),
     ],
 )
 
 # Force the rendering of scss files, even though they are included in a "partials" directory
 hooks.Filters.ENV_PATTERNS_INCLUDE.add_items(
     [
-        r"indigo/lms/static/sass/partials/lms/theme/",
-        r"indigo/cms/static/sass/partials/cms/theme/",
+        r"pt-tutor-theme/lms/static/sass/partials/lms/theme/",
+        r"pt-tutor-theme/cms/static/sass/partials/cms/theme/",
     ]
 )
 
@@ -61,8 +61,8 @@ hooks.Filters.ENV_PATTERNS_INCLUDE.add_items(
 # init script: set theme automatically
 with open(
     os.path.join(
-        str(importlib_resources.files("tutorindigo") / "templates"),
-        "indigo",
+        str(importlib_resources.files("pt-tutor-theme") / "templates"),
+        "pt-tutor-theme",
         "tasks",
         "init.sh",
     ),
@@ -84,18 +84,18 @@ def _override_openedx_docker_image(
         elif k == "MFE_DOCKER_IMAGE":
             mfe_image = v
     if openedx_image:
-        items.append(("DOCKER_IMAGE_OPENEDX", f"{openedx_image}-indigo"))
+        items.append(("DOCKER_IMAGE_OPENEDX", f"{openedx_image}-pt-tutor-theme"))
     if mfe_image:
-        items.append(("MFE_DOCKER_IMAGE", f"{mfe_image}-indigo"))
+        items.append(("MFE_DOCKER_IMAGE", f"{mfe_image}-pt-tutor-theme"))
     return items
 
 
 # Load all configuration entries
 hooks.Filters.CONFIG_DEFAULTS.add_items(
-    [(f"INDIGO_{key}", value) for key, value in config["defaults"].items()]
+    [(f"pt-tutor-theme_{key}", value) for key, value in config["defaults"].items()]
 )
 hooks.Filters.CONFIG_UNIQUE.add_items(
-    [(f"INDIGO_{key}", value) for key, value in config["unique"].items()]
+    [(f"pt-tutor-theme_{key}", value) for key, value in config["unique"].items()]
 )
 hooks.Filters.CONFIG_OVERRIDES.add_items(list(config["overrides"].items()))
 
@@ -105,42 +105,39 @@ hooks.Filters.ENV_PATCHES.add_items(
         (
             "mfe-dockerfile-post-npm-install-learning",
             """
-RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/pt-tutor-theme-brand-openedx@^1.0.0'
 """,
-            # remove indigo-header and indigo-footer due to incompatible version deps of MFEs
         ),
         (
             "mfe-dockerfile-post-npm-install-authn",
             """
-RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/pt-tutor-theme-brand-openedx@^1.0.0'
 """,
         ),
-        # Tutor-Indigo v2.1 targets the styling updates in discussions and learner-dashboard MFE
+
         # brand-openedx is related to styling updates while others are for header and footer updates
         (
             "mfe-dockerfile-post-npm-install-discussions",
             """
-RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/pt-tutor-theme-brand-openedx@^1.0.0'
 """,
-            # remove indigo-header and indigo-footer due to incompatible version deps of MFEs
         ),
         (
             "mfe-dockerfile-post-npm-install-learner-dashboard",
             """
-RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/pt-tutor-theme-brand-openedx@^1.0.0'
 """,
-            # remove indigo-footer due to incompatible version deps of MFEs
         ),
         (
             "mfe-dockerfile-post-npm-install-profile",
             """
-RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/pt-tutor-theme-brand-openedx@^1.0.0'
 """,
         ),
         (
             "mfe-dockerfile-post-npm-install-account",
             """
-RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/pt-tutor-theme-brand-openedx@^1.0.0'
 """,
         ),
     ]
