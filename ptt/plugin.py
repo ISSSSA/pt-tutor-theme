@@ -91,10 +91,10 @@ def _override_openedx_docker_image(
 
 # Load all configuration entries
 hooks.Filters.CONFIG_DEFAULTS.add_items(
-    [(f"pt-tutor-theme_{key}", value) for key, value in config["defaults"].items()]
+    [(f"ptt_{key}", value) for key, value in config["defaults"].items()]
 )
 hooks.Filters.CONFIG_UNIQUE.add_items(
-    [(f"pt-tutor-theme_{key}", value) for key, value in config["unique"].items()]
+    [(f"ptt_{key}", value) for key, value in config["unique"].items()]
 )
 hooks.Filters.CONFIG_OVERRIDES.add_items(list(config["overrides"].items()))
 

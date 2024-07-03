@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 .PHONY: docs
-SRC_DIRS = ./pt-tutor-theme
+SRC_DIRS = ./ptt
 BLACK_OPTS = --exclude templates ${SRC_DIRS}
 
 # Warning: These checks are not necessarily run on every PR.

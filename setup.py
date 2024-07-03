@@ -24,11 +24,11 @@ ABOUT = load_about()
 setup(
     name="ptt",
     version=ABOUT["__version__"],
-    url="https://github.com/ISSSSA/pt-tutor-theme",
+    url="https://github.com/ISSSSA/ptt",
     project_urls={
         "Documentation": "https://docs.tutor.edly.io/",
-        "Code": "https://github.com/ISSSSA/pt-tutor-theme",
-        "Issue tracker": "https://github.com/ISSSSA/pt-tutor-theme/issues",
+        "Code": "https://github.com/ISSSSA/ptt",
+        "Issue tracker": "https://github.com/ISSSSA/ptt/issues",
         "Community": "https://discuss.openedx.org",
     },
     license="AGPLv3",

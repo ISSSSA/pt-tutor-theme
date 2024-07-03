@@ -1,1 +1,1 @@
-recursive-include pt-tutor-theme/templates *
+recursive-include ptt/templates *

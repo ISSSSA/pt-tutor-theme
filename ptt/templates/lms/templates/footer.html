@@ -42,10 +42,10 @@
         </li>
       </ul>
     </div>
-    {% if pt-tutor-theme_NAV_LINKS %}
+    {% if ptt_NAV_LINKS %}
     <nav class="nav-colophon" aria-label="${_('About')}">
       <ol>
-          {% for link in pt-tutor-theme_NAV_LINKS %}
+          {% for link in ptt_NAV_LINKS %}
           <li>
             <a href="{{ link['url'] }}">{{ link['title'] }}</a>
           </li>
@@ -106,10 +106,10 @@
           </li>
         </ul>
       </div>
-      {% if pt-tutor-theme_NAV_LINKS %}
+      {% if ptt_NAV_LINKS %}
       <nav class="nav-colophon" aria-label="${_('About')}">
         <ol>
-            {% for link in pt-tutor-theme_FOOTER_NAV_LINKS %}
+            {% for link in ptt_FOOTER_NAV_LINKS %}
             <li>
               <a href="{{ link['url'] }}">{{ link['title'] }}</a>
             </li>
