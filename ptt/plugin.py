@@ -62,7 +62,6 @@ hooks.Filters.ENV_PATTERNS_INCLUDE.add_items(
 with open(
     os.path.join(
         str(importlib_resources.files("ptt") / "templates"),
-        "ptt",
         "tasks",
         "init.sh",
     ),
@@ -105,13 +104,13 @@ hooks.Filters.ENV_PATCHES.add_items(
         (
             "mfe-dockerfile-post-npm-install-learning",
             """
-RUN npm install '@edx/brand@npm:@edly-io/ptt-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
 """,
         ),
         (
             "mfe-dockerfile-post-npm-install-authn",
             """
-RUN npm install '@edx/brand@npm:@edly-io/ptt-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
 """,
         ),
 
@@ -119,25 +118,25 @@ RUN npm install '@edx/brand@npm:@edly-io/ptt-brand-openedx@^1.0.0'
         (
             "mfe-dockerfile-post-npm-install-discussions",
             """
-RUN npm install '@edx/brand@npm:@edly-io/ptt-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
 """,
         ),
         (
             "mfe-dockerfile-post-npm-install-learner-dashboard",
             """
-RUN npm install '@edx/brand@npm:@edly-io/ptt-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
 """,
         ),
         (
             "mfe-dockerfile-post-npm-install-profile",
             """
-RUN npm install '@edx/brand@npm:@edly-io/ptt-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
 """,
         ),
         (
             "mfe-dockerfile-post-npm-install-account",
             """
-RUN npm install '@edx/brand@npm:@edly-io/ptt-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
 """,
         ),
     ]
