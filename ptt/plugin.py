@@ -40,20 +40,20 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
 
 # Theme templates
 hooks.Filters.ENV_TEMPLATE_ROOTS.add_item(
-    str(importlib_resources.files("pt-tutor-theme") / "templates")
+    str(importlib_resources.files("ptt") / "templates")
 )
 # This is where the theme is rendered in the openedx build directory
 hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     [
-        ("pt-tutor-theme", "build/openedx/themes"),
+        ("ptt", "build/openedx/themes"),
     ],
 )
 
 # Force the rendering of scss files, even though they are included in a "partials" directory
 hooks.Filters.ENV_PATTERNS_INCLUDE.add_items(
     [
-        r"pt-tutor-theme/lms/static/sass/partials/lms/theme/",
-        r"pt-tutor-theme/cms/static/sass/partials/cms/theme/",
+        r"ptt/lms/static/sass/partials/lms/theme/",
+        r"ptt/cms/static/sass/partials/cms/theme/",
     ]
 )
 
@@ -61,8 +61,8 @@ hooks.Filters.ENV_PATTERNS_INCLUDE.add_items(
 # init script: set theme automatically
 with open(
     os.path.join(
-        str(importlib_resources.files("pt-tutor-theme") / "templates"),
-        "pt-tutor-theme",
+        str(importlib_resources.files("ptt") / "templates"),
+        "ptt",
         "tasks",
         "init.sh",
     ),
@@ -84,9 +84,9 @@ def _override_openedx_docker_image(
         elif k == "MFE_DOCKER_IMAGE":
             mfe_image = v
     if openedx_image:
-        items.append(("DOCKER_IMAGE_OPENEDX", f"{openedx_image}-pt-tutor-theme"))
+        items.append(("DOCKER_IMAGE_OPENEDX", f"{openedx_image}-ptt"))
     if mfe_image:
-        items.append(("MFE_DOCKER_IMAGE", f"{mfe_image}-pt-tutor-theme"))
+        items.append(("MFE_DOCKER_IMAGE", f"{mfe_image}-ptt"))
     return items
 
 
@@ -105,13 +105,13 @@ hooks.Filters.ENV_PATCHES.add_items(
         (
             "mfe-dockerfile-post-npm-install-learning",
             """
-RUN npm install '@edx/brand@npm:@edly-io/pt-tutor-theme-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/ptt-brand-openedx@^1.0.0'
 """,
         ),
         (
             "mfe-dockerfile-post-npm-install-authn",
             """
-RUN npm install '@edx/brand@npm:@edly-io/pt-tutor-theme-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/ptt-brand-openedx@^1.0.0'
 """,
         ),
 
@@ -119,25 +119,25 @@ RUN npm install '@edx/brand@npm:@edly-io/pt-tutor-theme-brand-openedx@^1.0.0'
         (
             "mfe-dockerfile-post-npm-install-discussions",
             """
-RUN npm install '@edx/brand@npm:@edly-io/pt-tutor-theme-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/ptt-brand-openedx@^1.0.0'
 """,
         ),
         (
             "mfe-dockerfile-post-npm-install-learner-dashboard",
             """
-RUN npm install '@edx/brand@npm:@edly-io/pt-tutor-theme-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/ptt-brand-openedx@^1.0.0'
 """,
         ),
         (
             "mfe-dockerfile-post-npm-install-profile",
             """
-RUN npm install '@edx/brand@npm:@edly-io/pt-tutor-theme-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/ptt-brand-openedx@^1.0.0'
 """,
         ),
         (
             "mfe-dockerfile-post-npm-install-account",
             """
-RUN npm install '@edx/brand@npm:@edly-io/pt-tutor-theme-brand-openedx@^1.0.0'
+RUN npm install '@edx/brand@npm:@edly-io/ptt-brand-openedx@^1.0.0'
 """,
         ),
     ]

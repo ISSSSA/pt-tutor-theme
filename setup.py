@@ -5,15 +5,12 @@ from setuptools import setup, find_packages
 HERE = os.path.abspath(os.path.dirname(__file__))
 
 
-def load_readme():
-    with io.open(os.path.join(HERE, "README.rst"), "rt", encoding="utf8") as f:
-        return f.read()
 
 
 def load_about():
     about = {}
     with io.open(
-        os.path.join(HERE, "pt-tutor-theme", "__about__.py"),
+        os.path.join(HERE, "ptt", "__about__.py"),
         "rt",
         encoding="utf-8",
     ) as f:
@@ -25,7 +22,7 @@ ABOUT = load_about()
 
 
 setup(
-    name="pt-tutor-theme",
+    name="ptt",
     version=ABOUT["__version__"],
     url="https://github.com/ISSSSA/pt-tutor-theme",
     project_urls={
@@ -39,14 +36,13 @@ setup(
     author_email="contact@overhang.io",
     maintainer="Edly",
     maintainer_email="hina.khadim@arbisoft.com",
-    description="pt-tutor-theme theme plugin for Tutor",
-    # long_description=load_readme(),
+    description="ptt theme plugin for Tutor",
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
     python_requires=">=3.8",
     install_requires=["tutor>=18.0.0,<19.0.0", "tutor-mfe>=18.0.0,<19.0.0"],
     extras_require={"dev": "tutor[dev]>=18.0.0,<19.0.0"},
-    entry_points={"tutor.plugin.v1": ["pt-tutor-theme = pt-tutor-theme.plugin"]},
+    entry_points={"tutor.plugin.v1": ["ptt = ptt.plugin"]},
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
