@@ -4,8 +4,7 @@ import sys
 from django.contrib.sites.models import Site
 def assign_theme(domain):
     site, _ = Site.objects.get_or_create(domain=domain)
-    if not site.themes.exists():
-        site.themes.create(theme_dir_name='ptt')
+    site.themes.create(theme_dir_name='ptt')
 
 assign_theme('{{ LMS_HOST }}')
 assign_theme('{{ LMS_HOST }}')
