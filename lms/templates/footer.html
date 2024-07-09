@@ -42,10 +42,18 @@
         </li>
       </ul>
     </div>
-    {% if ptt_NAV_LINKS %}
+    {% if true %}
     <nav class="nav-colophon" aria-label="${_('About')}">
       <ol>
-          {% for link in ptt_NAV_LINKS %}
+          {% for link in [
+            {"title": "About Us", "url": "/about"},
+            {"title": "Blog", "url": "/blog"},
+            {"title": "Donate", "url": "/donate"},
+            {"title": "Terms of Service", "url": "/tos"},
+            {"title": "Privacy Policy", "url": "/privacy"},
+            {"title": "Help", "url": "/help"},
+            {"title": "Contact Us", "url": "/contact"},
+        ] %}
           <li>
             <a href="{{ link['url'] }}">{{ link['title'] }}</a>
           </li>
@@ -106,10 +114,18 @@
           </li>
         </ul>
       </div>
-      {% if ptt_NAV_LINKS %}
+      {% if true %}
       <nav class="nav-colophon" aria-label="${_('About')}">
         <ol>
-            {% for link in ptt_FOOTER_NAV_LINKS %}
+            {% for link in [
+            {"title": "About Us", "url": "/about"},
+            {"title": "Blog", "url": "/blog"},
+            {"title": "Donate", "url": "/donate"},
+            {"title": "Terms of Service", "url": "/tos"},
+            {"title": "Privacy Policy", "url": "/privacy"},
+            {"title": "Help", "url": "/help"},
+            {"title": "Contact Us", "url": "/contact"},
+        ] %}
             <li>
               <a href="{{ link['url'] }}">{{ link['title'] }}</a>
             </li>
