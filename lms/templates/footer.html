@@ -35,32 +35,8 @@
             <img src="${static.url('images/tutor-logo.png')}" alt="Runs on Tutor" width="57" />
           </a>
         </li>
-        <li>
-          <a href="${footer['openedx_link']['url']}" rel="noopener" target="_blank">
-            <img src="${static.url('images/openedx-logo.png')}" alt="${footer['openedx_link']['title']}" width="79" />
-          </a>
-        </li>
       </ul>
     </div>
-    {% if true %}
-    <nav class="nav-colophon" aria-label="${_('About')}">
-      <ol>
-          {% for link in [
-            {"title": "About Us", "url": "/about"},
-            {"title": "Blog", "url": "/blog"},
-            {"title": "Donate", "url": "/donate"},
-            {"title": "Terms of Service", "url": "/tos"},
-            {"title": "Privacy Policy", "url": "/privacy"},
-            {"title": "Help", "url": "/help"},
-            {"title": "Contact Us", "url": "/contact"},
-        ] %}
-          <li>
-            <a href="{{ link['url'] }}">{{ link['title'] }}</a>
-          </li>
-          {% endfor %}
-      </ol>
-    </nav>
-    {% endif %}
   </div>
   <span class="copyright-site">Copyrights ©${datetime.now().year}. All Rights Reserved.</span>
   % endif
@@ -114,19 +90,6 @@
           </li>
         </ul>
       </div>
-      {% if true %}
-      <nav class="nav-colophon" aria-label="${_('About')}">
-        <ol>
-            {% for link in [
-
-        ] %}
-            <li>
-              <a href="{{ link['url'] }}">{{ link['title'] }}</a>
-            </li>
-            {% endfor %}
-        </ol>
-      </nav>
-      {% endif %}
     </div>
     <span class="copyright-site">Copyrights ©${datetime.now().year}. All Rights Reserved.</span>
     % endif
